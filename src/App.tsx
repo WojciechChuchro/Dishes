@@ -17,30 +17,49 @@ function App() {
     type: "",
   })
 
-  const handleSubmit = (event: React.ChangeEvent<HTMLInputElement>) => {
-    event.preventDefault()
-  }
-  function handleSelectChange(event: React.ChangeEvent<HTMLSelectElement>) {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    fetch('https://umzzcc503l.execute-api.us-west-2.amazonaws.com/dishes/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log('Response:', data);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  };
+
+
+  
+  const handleSelectChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
     setData((prevData) => ({
       ...prevData,
-      type: event.target.value,
-    }))
-  }
+      [name]: value,
+    }));
+  };
 
   return (
     <>
       <form
-        onSubmit={() => handleSubmit}
+        onSubmit={handleSubmit}
         className="flex items-center justify-center bg-slate-800 w-screen h-screen"
       >
         <div className="flex flex-col">
-          <div className="flex">
+          
             <div className="flex flex-col gap-3">
             <input
               type="text"
               id="name"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Name"
+              name="name"
               required
             />
             
@@ -50,14 +69,17 @@ function App() {
               id="preparation-time"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Preparation time"
+              name="preparation_time"
               required
             />
             <select
               id="type-id"
+              name="type"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               onChange={handleSelectChange}
+              value={data.type}
             >
-              <option selected>Select a type</option>
+              <option value="">Select a type</option>
               <option value="Pizza">Pizza</option>
               <option value="Soup">Soup</option>
               <option value="Sandwich">Sandwich</option>
@@ -113,7 +135,7 @@ function App() {
               </>
             )}
             </div>
-          </div>
+
           <div className="mt-2 flex justify-center items-center">
             <button
               type="submit"
