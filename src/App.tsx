@@ -72,8 +72,9 @@ function App() {
               required
               value={data.preparation_time}
             />
+
             <select
-              id="type-id"
+              id="type"
               name="type"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               onChange={handleChange}
@@ -91,7 +92,7 @@ function App() {
                 <input
                   onChange={handleChange}
                   type="number"
-                  value={data.no_of_slices || 0}
+                  value={data.no_of_slices || ""}
                   id="no_of_slices"
                   name="no_of_slices"
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -102,10 +103,10 @@ function App() {
                 <input
                   onChange={handleChange}
                   type="number"
-                  value={data.diameter || 0}
+                  value={data.diameter || ""}
                   id="diameter"
                   name="diameter"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  className="appearance-none bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="Diameter"
                   required
                 />
@@ -117,7 +118,7 @@ function App() {
                 <input
                   onChange={handleChange}
                   type="number"
-                  value={data.spiciness_scale || 0}
+                  value={data.spiciness_scale || ""}
                   id="spiciness-scale"
                   name="spiciness_scale"
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -132,7 +133,7 @@ function App() {
                 <input
                   onChange={handleChange}
                   type="number"
-                  value={data.slices_of_bread || 0}
+                  value={data.slices_of_bread || ""}
                   id="slices-of-bread"
                   name="slices_of_bread"
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"

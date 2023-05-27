@@ -11,6 +11,11 @@ export const validateForm = (
 
   if (data.name.trim() === "") {
     setErrors((errors) => ({ ...errors, name: "Dish name is required" }))
+  } else if (data.name.trim().length < 3) {
+    setErrors((errors) => ({
+      ...errors,
+      name: "Name should have atleast 3 characters",
+    }))
   } else {
     setErrors((errors) => ({ ...errors, name: null }))
   }
@@ -23,7 +28,8 @@ export const validateForm = (
   } else if (!timeRegex.test(data.preparation_time.trim())) {
     setErrors((errors) => ({
       ...errors,
-      preparation_time: "Preparation time has invalid syntax",
+      preparation_time:
+        "Preparation time has invalid syntax, correct syntax HH:MM:SS",
     }))
   } else {
     setErrors((errors) => ({ ...errors, preparation_time: null }))
