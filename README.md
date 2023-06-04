@@ -1,5 +1,10 @@
 # Dishes Project
 
+## Requirements
+
+- Node.js version: 20.1.0
+- npm version: 9.6.4
+
 ## Project Setup
 
 1. Clone the repository:
@@ -21,11 +26,6 @@
 - npm run dev
 
 2. Once the server is running, you will see a link displayed in the console. Open that link in your browser to access the project.
-
-## Requirements
-
-- Node.js version: 20.1.0
-- npm version: 9.6.4
 
 ## Time Spent
 
